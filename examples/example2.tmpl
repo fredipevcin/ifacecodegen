@@ -1,0 +1,22 @@
+func NewLogger{{ .Name }}(s {{ .Name }}) {{ .Name }} {
+	return &logger{{ .Name }}{
+		s: s,
+	}
+}
+type logger{{ .Name }} struct {
+	s {{ .Name }}
+}
+
+{{ $ifaceRef := . }}
+{{ range .Methods }}
+func (l *logger{{ $ifaceRef.Name }}) {{ .Name }}({{ input_parameters . }}) {{ $methodRef := . }}{{ output_parameters . }} {
+		defer func(begin time.Time) {
+			var err error {{ if ne (output_var_error .) "" -}}
+			 = {{ output_var_error . }}
+			{{- end }}
+			log.Print("method", "{{ snakecase .Name }}", "took", time.Since(begin), "error", err)
+		}(time.Now())
+		{{ return . }} l.s.{{ .Name }}({{ input_calls . }})
+}
+
+{{ end }}

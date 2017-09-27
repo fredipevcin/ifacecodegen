@@ -1,0 +1,36 @@
+// NewTracingFactory creates a new trace wrapper instance
+func NewTracing{{ .Name }}(s {{ .Name }},tracer *opentracing.Tracer) {{ .Name }} {
+	return &tracing{{ .Name }}{
+		s: s,
+		tracer: tracer,
+	}
+}
+
+// TracingFactory is a mock of Factory interface
+type tracing{{ .Name }} struct {
+	s {{ .Name }}
+	tracer opentracing.Tracer
+}
+
+
+{{ $ifaceRef := . }}
+{{ range .Methods }}func (t *tracing{{ $ifaceRef.Name }}) {{ .Name }}({{ input_parameters . }}) {{ $methodRef := . }}{{ output_parameters . }} {
+	{{ if ne (input_var_type . "context.Context") "" -}}
+	span := opentracing.SpanFromContext({{ input_var_type . "context.Context" }})
+	if span != nil {
+		span = t.tracer.StartSpan("service.{{ meta "service" }}.{{ snakecase .Name }}", opentracing.ChildOf(span.Context()))
+		defer func(span opentracing.Span) {
+			{{- if ne (output_var_error .) ""}}
+			if {{ output_var_error . }} != nil {
+				ext.Error.Set(span, true)
+				span.LogFields(tracinglog.Error({{ output_var_error . }}))
+			}
+			{{ end -}}
+			span.Finish()
+		}(span)
+	}
+	{{ end -}}
+	{{ return . }} t.s.{{ .Name }}({{ input_calls . }})
+}
+
+{{ end }}

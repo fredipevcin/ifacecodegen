@@ -1,0 +1,67 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "vCXt502N4j3FFwOGdcPTwQkGlms=",
+			"path": "github.com/Masterminds/semver",
+			"revision": "517734cc7d6470c0d07130e40fd40bdeb9bcd3fd",
+			"revisionTime": "2017-07-10T14:37:19Z"
+		},
+		{
+			"checksumSHA1": "j7GJFsqyn+lFwKwvISuXFZdypkI=",
+			"path": "github.com/Masterminds/sprig",
+			"revision": "4c164950cd0a8d3724ddb78982e2c56dc7f47112",
+			"revisionTime": "2017-09-07T19:43:32Z"
+		},
+		{
+			"checksumSHA1": "X0xGt0e0IkZeviF+pFRlpHP+xkE=",
+			"path": "github.com/aokoli/goutils",
+			"revision": "3391d3790d23d03408670993e957e8f408993c34",
+			"revisionTime": "2017-05-31T11:00:25Z"
+		},
+		{
+			"checksumSHA1": "mWeNctRQE955ZxV4HAx7KCDtVQE=",
+			"path": "github.com/huandu/xstrings",
+			"revision": "d6590c0c31d16526217fa60fbd2067f7afcd78c5",
+			"revisionTime": "2017-09-08T06:10:42Z"
+		},
+		{
+			"checksumSHA1": "66lykxpWgSmQodnhkADqn6tnroQ=",
+			"path": "github.com/imdario/mergo",
+			"revision": "e3000cb3d28c72b837601cac94debd91032d19fe",
+			"revisionTime": "2017-06-20T10:47:01Z"
+		},
+		{
+			"checksumSHA1": "zmC8/3V4ls53DJlNTKDZwPSC/dA=",
+			"path": "github.com/satori/go.uuid",
+			"revision": "5bf94b69c6b68ee1b541973bb8e1144db23a194b",
+			"revisionTime": "2017-03-21T23:07:31Z"
+		},
+		{
+			"checksumSHA1": "1MGpGDQqnUoRpv7VEcQrXOBydXE=",
+			"path": "golang.org/x/crypto/pbkdf2",
+			"revision": "7d9177d70076375b9a59c8fde23d52d9c4a7ecd5",
+			"revisionTime": "2017-09-15T19:08:28Z"
+		},
+		{
+			"checksumSHA1": "0NcipKj1ECwxiIrEHQ0wdoL54Sc=",
+			"path": "golang.org/x/crypto/scrypt",
+			"revision": "7d9177d70076375b9a59c8fde23d52d9c4a7ecd5",
+			"revisionTime": "2017-09-15T19:08:28Z"
+		},
+		{
+			"checksumSHA1": "8bP6iLolDGDRKAnx89Qb/OatWDE=",
+			"path": "golang.org/x/tools/go/ast/astutil",
+			"revision": "e531a2a1c15f94033f6fa87666caeb19a688175f",
+			"revisionTime": "2017-09-14T20:19:24Z"
+		},
+		{
+			"checksumSHA1": "a4xTjkKxeotwvq7ASh/SKaBLGXk=",
+			"path": "golang.org/x/tools/imports",
+			"revision": "e531a2a1c15f94033f6fa87666caeb19a688175f",
+			"revisionTime": "2017-09-14T20:19:24Z"
+		}
+	],
+	"rootPath": "github.com/fredipevcin/generator"
+}

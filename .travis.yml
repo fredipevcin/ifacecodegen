@@ -1,0 +1,13 @@
+language: go
+
+before_install:
+  - go get github.com/golang/lint/golint
+
+script:
+  - make qa
+
+go:
+  - 1.7.x
+  - 1.8.x
+  - 1.9.x
+  - tip
