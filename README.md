@@ -3,9 +3,7 @@
 [![Build Status](https://travis-ci.org/fredipevcin/ifacecodegen.svg?branch=master)](https://travis-ci.org/fredipevcin/ifacecodegen)
 [![GoDoc](https://godoc.org/github.com/fredipevcin/ifacecodegen?status.svg)](https://godoc.org/github.com/fredipevcin/ifacecodegen)
 
-Go tool and library for generating code from the template using interface definition
-
-
+Go tool and library for generating code from the template using interface definition.
 
 ## Installation
 
@@ -14,7 +12,7 @@ Go tool and library for generating code from the template using interface defini
 
 ## Running ifacecodegen
 
-	ifacecodegen -source=examples/interface.go -destination -
+	ifacecodegen -source examples/interface.go -destination -
 
 or
 
