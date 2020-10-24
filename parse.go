@@ -159,31 +159,53 @@ func parseType(pkg string, arg ast.Expr) (Type, error) {
 func parseFunc(pkg string, name string, f *ast.FuncType) (*Method, error) {
 	var method = &Method{Name: name, In: make([]*Parameter, 0), Out: make([]*Parameter, 0)}
 	if f.Params != nil {
-		for idx, arg := range f.Params.List {
-			var param = &Parameter{Name: fmt.Sprintf("_param%d", idx+1)}
-			if len(arg.Names) > 0 {
-				param.Name = arg.Names[0].String()
-			}
+		var index int
+		for _, arg := range f.Params.List {
 			var t, e = parseType(pkg, arg.Type)
 			if e != nil {
 				return nil, e
 			}
-			param.Type = t
-			method.In = append(method.In, param)
+
+			if len(arg.Names) > 0 {
+				for i := range arg.Names {
+					index++
+					method.In = append(method.In, &Parameter{
+						Name: arg.Names[i].String(),
+						Type: t,
+					})
+				}
+			} else {
+				index++
+				method.In = append(method.In, &Parameter{
+					Name: fmt.Sprintf("_param%d", index),
+					Type: t,
+				})
+			}
 		}
 	}
 	if f.Results != nil {
-		for idx, arg := range f.Results.List {
-			var param = &Parameter{Name: fmt.Sprintf("_result%d", idx+1)}
-			if len(arg.Names) > 0 {
-				param.Name = arg.Names[0].String()
-			}
+		var index int
+		for _, arg := range f.Results.List {
 			var t, e = parseType(pkg, arg.Type)
 			if e != nil {
 				return nil, e
 			}
-			param.Type = t
-			method.Out = append(method.Out, param)
+
+			if len(arg.Names) > 0 {
+				for i := range arg.Names {
+					index++
+					method.Out = append(method.Out, &Parameter{
+						Name: arg.Names[i].String(),
+						Type: t,
+					})
+				}
+			} else {
+				index++
+				method.Out = append(method.Out, &Parameter{
+					Name: fmt.Sprintf("_result%d", index),
+					Type: t,
+				})
+			}
 		}
 	}
 	return method, nil

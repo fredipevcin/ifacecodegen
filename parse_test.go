@@ -66,6 +66,7 @@ package foo
 
 type Service interface {
 	Foo(string) Bar
+	Mult(p1, p2 string) (r1, r2 string)
 }
 
 `),
@@ -100,6 +101,29 @@ type Service interface {
 									Package: "foo",
 									Type:    TypeBuiltin("Bar"),
 								},
+							},
+						},
+					},
+					&Method{
+						Name: "Mult",
+						In: []*Parameter{
+							&Parameter{
+								Name: "p1",
+								Type: TypeBuiltin("string"),
+							},
+							&Parameter{
+								Name: "p2",
+								Type: TypeBuiltin("string"),
+							},
+						},
+						Out: []*Parameter{
+							&Parameter{
+								Name: "r1",
+								Type: TypeBuiltin("string"),
+							},
+							&Parameter{
+								Name: "r2",
+								Type: TypeBuiltin("string"),
 							},
 						},
 					},

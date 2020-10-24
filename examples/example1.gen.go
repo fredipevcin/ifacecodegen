@@ -50,3 +50,7 @@ func (t *tracingFoo) IsValid() (_result1 bool) {
 func (t *tracingFoo) ValidateMulti(_param1 ...Entity) {
 	t.s.ValidateMulti(_param1...)
 }
+
+func (t *tracingFoo) Multi(p1 string, p2 string) (r1 string, r2 string) {
+	return t.s.Multi(p1, p2)
+}
