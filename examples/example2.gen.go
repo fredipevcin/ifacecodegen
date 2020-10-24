@@ -50,3 +50,11 @@ func (l *loggerFoo) ValidateMulti(_param1 ...Entity) {
 	}(time.Now())
 	l.s.ValidateMulti(_param1...)
 }
+
+func (l *loggerFoo) Multi(p1 string, p2 string) (r1 string, r2 string) {
+	defer func(begin time.Time) {
+		var err error
+		log.Print("method", "multi", "took", time.Since(begin), "error", err)
+	}(time.Now())
+	return l.s.Multi(p1, p2)
+}

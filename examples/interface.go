@@ -11,4 +11,5 @@ type Foo interface {
 	Save([]Entity) error
 	IsValid() bool
 	ValidateMulti(...Entity)
+	Multi(p1, p2 string) (r1, r2 string)
 }
